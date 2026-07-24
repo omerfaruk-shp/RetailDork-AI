@@ -1,71 +1,67 @@
-# 🚀 RetailDork-AI: AI-Powered E-Commerce Intelligence Engine
+# 🚀 Ultimate Price & Link Scraper
 
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue?logo=python)](https://www.python.org/)
-[![Playwright](https://img.shields.io/badge/playwright-automation-green?logo=googlechrome)](https://playwright.dev/)
-[![Gemma 4](https://img.shields.io/badge/AI_Model-Gemma_4-purple?logo=google)](https://ai.google.dev/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-**RetailDork-AI**, modern e-ticaret sitelerinin karmaşık yapısını aşmak, gizli indirimleri tespit etmek ve çoklu platformlardan (Akakçe, Cimri vb.) veri çekerek **Gemma 4** yapay zeka modeli ile analiz eden profesyonel bir fiyat karşılaştırma ve veri analizi aracıdır.
+Gelişmiş web kazıma (scraping) teknikleri ve yerel yapay zeka entegrasyonu ile e-ticaret platformları ve Google Shopping üzerinde otomatik ürün/fiyat araması yapan, sonuçları filtrelenmiş ve biçimlendirilmiş bir Excel dosyasına dönüştüren otomasyon sistemidir.
 
 ---
 
-## 🏗️ Teknik Mimari & Teknoloji Yığını
+## ✨ Özellikler
 
-RetailDork-AI, sadece basit bir "scraper" değil; gelişmiş otomasyon ve doğal dil işleme (NLP) tekniklerini birleştiren bir motor üzerine inşa edilmiştir:
-
-### 1. Veri Kazıma Katmanı (Scraping Layer)
-*   **Playwright Engine:** Dinamik içerikleri render etmek, JavaScript tabanlı siteleri (React/Next.js vb.) taramak ve bot korumalarını aşmak için tercih edildi.
-*   **Google Dorking Strategy:** Sadece standart arama sonuçlarını değil, belirli parametreleri (`site:`, `inurl:`, `intitle:` gibi) kullanarak hedef platformlardaki derin linkleri otomatik olarak filtreler.
-
-### 2. Veri İşleme ve Temizleme (Data Processing)
-*   **Regex & NLP:** Ham metinden fiyatları ayıklarken, para birimi sembollerini temizler ve sayısal doğrulamalar yapar.
-*   **De-duplication:** Farklı satıcılardan gelen mükerrer ilanları otomatik olarak tespit eder ve tekilleştirir.
-
-### 3. Yapay Zeka Analiz Katmanı (AI Insight)
-*   **Gemma 4 Integration:** Toplanan veriler **Gemma 4** modeline beslenir. Model şu görevleri üstlenir:
-    *   Fiyat/Performans oranlarını hesaplama.
-    *   Ürün açıklamalarındaki "gizli" özellikleri öne çıkarma.
-    *   Satıcı güvenilirliği ve öneri metinleri oluşturma.
+* 🔍 **Çoklu Platform Taraması:** Akakçe, Cimri, Trendyol, Hepsiburada, Amazon TR, N11, PttAVM, Teknosa, Vatan Bilgisayar ve daha birçok platformda Google Dork altyapısı ile arama yapar.
+* 🛒 **Google Shopping Akışı:** `udm=28` parametresiyle doğrudan Google Shopping sekmesinden güncel mağaza fiyatlarını toplar.
+* 🧹 **Akıllı Gürültü Filtresi:** Sonuçlar arasındaki kılıf, yedek parça, ekran koruyucu veya 2. el / teşhir ürünlerini otomatik olarak eler.
+* 📊 **Raporlanmış Excel Çıktısı:** En ucuzdan pahalıya sıralı, canlı ürün bağlantılarına sahip (`Tıkla & Git`), sütun genişlikleri ve renkleri ayarlanmış `.xlsx` dosyası üretir.
+* 🧠 **Yerel Yapay Zeka (Ollama) Analizi:** Çekilen fiyat verilerini yerel LLM (`gemma4:12b` veya `gemma2:9b`) modeline göndererek mağazalar arası fiyat farkı ve F/P tavsiyesi sunan analiz raporu oluşturur.
+* 🛡️ **Evrensel Kurulum:** macOS (Brew) ve tüm ana Linux dağıtımlarında (Ubuntu, Debian, Fedora, Arch, openSUSE) tüm bağımlılıkları tek tıkla kurar.
 
 ---
 
-## 🛠️ Kurulum ve Başlatma
+## 📂 Proje Yapısı
 
-### Sistem Gereksinimleri
-- Python 3.9 veya üzeri
-- Node.js (Playwright bağımlılıkları için)
-- Ollama (Yerel Gemma 4 çalıştırımı için önerilir)
+.
+├── retaildork.py     # Ana Python fiyat tarama ve LLM analiz kodu
+├── install.sh     # Sistem bağımlılıkları, Ollama ve modelleri kuran betik
+├── run.sh         # Projeyi tek tıkla başlatan otomatik çalıştırıcı (Install.sh üretir)
+└── README.md      # Proje dokümantasyonu
 
-### Hızlı Kurulum Adımları
-1. **Depoyu Klonlayın:**
-   ```bash
-   git clone https://github.com/omerfaruk-shp/RetailDork-AI.git
-   cd RetailDork-AI
-Bağımlılıkları Yükleyin:
+---
 
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-Tarayıcı Motorlarını Hazırlayın:
+## ⚡ Hızlı Kurulum
 
-playwright install chromium
-Yerel AI Modelini Başlatın (Opsiyonel): Kullanıcıların kendi makinelerinde çalışması için Ollama kurulumu önerilir.
+Tüm gereksinimleri (Python sanal ortamı, Playwright Chromium motoru, Ollama ve Yapay Zeka Modeli) otomatik yüklemek için terminalinizde aşağıdaki komutları çalıştırmanız yeterlidir:
 
-ollama pull gemma4:12b
-📖 Kullanım Kılavuzu
-Programı çalıştırmak ve analiz süreci başlatmak için şu adımları izleyin:
+chmod +x Install.sh
+./Install.sh
 
-Terminal Üzerinden Çalıştırma
-python retaildork.py
-Uygulama Akışı (Workflow)
-Hedef Girişi: Program çalıştığında sizden bir ürün adı veya anahtar kelime ister (Örn: "Logitech G Pro X Superlight").
-Dorking Aşaması: Sistem, Google ve partner platformlarda özel "dork" sorguları gönderir.
-Derin Tarama: Playwrighter'lar belirlenen linklere girer, sayfa içeriğini indirler ve dinamik elementleri işler.
-AI İşleme: Toplanan ham veri temizlenir ve Gemma 4 modeline gönderilir. Model, veriyi şu formatta analiz eder:
-En Uygun Seçenek
-Fiyat Trendi Analizi
-Satıcı Farklılıkları
-Raporlama: İşlem bittiğinde outputs/ klasörü altına otomatik olarak bir .xlsx dosyası üretilir.
-📁 Proje Dosya Yapısı
-RetailDork-AI/
-├── install.sh             
-└── retaildork.py   
+---
+
+## 🚀 Kullanım
+
+Kurulum tamamlandıktan sonra projeyi başlatmak için tek yapmanız gereken:
+
+./run.sh
+
+1. Sistem sizden aratmak istediğiniz **Ürün / Model** adını isteyecektir (Örn: `Sony PlayStation 5 Slim 1TB`).
+2. Tarayıcı (Chromium) otomatik açılacaktır. Ekranda bot doğrulaması (reCAPTCHA) çıkarsa çözüp terminale gelerek **ENTER** tuşuna basın.
+3. Tarama bittiğinde proje dizinine `[urun_adi]_ucuz_fiyat_listesi.xlsx` dosyası kaydedilecek ve terminalde **Yerel AI Mağaza Analiz Raporu** görüntülenecektir.
+
+---
+
+## 🛠️ Alternatif / Manuel Çalıştırma
+
+`run.sh` kullanmak istemiyorsanız sanal ortamı manuel aktifleştirip Python dosyanızı doğrudan çalıştırabilirsiniz:
+
+# 1. Sanal ortamı aktif edin
+source venv/bin/activate
+
+# 2. Scraper kodunuzu çalıştırın
+python scraper.py
+
+---
+
+## ⚙️ Teknolojik Bağlam & Gereksinimler
+
+* **Python 3.9+**
+* **Playwright** (Web otomasyonu ve tarayıcı yönlendirmeleri)
+* **BeautifulSoup4** (HTML parse işlemleri)
+* **Pandas & OpenPyXL** (Veri manipülasyonu ve Excel biçimlendirme)
+* **Ollama & OpenAI Client** (Yerel yapay zeka modeli erişimi)

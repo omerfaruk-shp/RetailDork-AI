@@ -8,7 +8,14 @@ from playwright.async_api import async_playwright
 from openai import OpenAI
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, PatternFill, Alignment
-
+from ascii_magic import AsciiArt
+import os 
+def ascii_art_work():
+    my_art = AsciiArt.from_image('meliodas.jpg')
+    my_art.to_terminal()
+    time.sleep(4)
+    os.system('reset')
+ascii_art_work()
 LOCAL_API_URL = "http://localhost:11434/v1" 
 client = OpenAI(base_url=LOCAL_API_URL, api_key="yerel-kullanim")
 

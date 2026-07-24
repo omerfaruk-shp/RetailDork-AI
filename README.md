@@ -19,8 +19,11 @@ Gelişmiş web kazıma (scraping) teknikleri ve yerel yapay zeka entegrasyonu il
 
 .
 ├── retaildork.py     # Ana Python fiyat tarama ve LLM analiz kodu
+
 ├── install.sh     # Sistem bağımlılıkları, Ollama ve modelleri kuran betik
+
 ├── run.sh         # Projeyi tek tıkla başlatan otomatik çalıştırıcı (Install.sh üretir)
+
 └── README.md      # Proje dokümantasyonu
 
 ---
